@@ -29,9 +29,13 @@ PASSWORD_CLIENT_SECRET=ErXFrQWWXRAqCONw3wbODE9cPsYvn9sO00WCAZbz
 
 ### Using Curl
 
+The `phone` and `password` are required for register.
+
 ```git
 curl -X POST http://localhost:8000/api/register -b cookies.txt -c cookies.txt -D headers.txt -H 'Content-Type: application/json' -d '
     {
+        "name": "",
+        "email": "",
         "phone": "098080808556",
         "password": "testpass"
     }
@@ -75,6 +79,8 @@ Body Response
 ## Login
 
 ### Using Curl
+
+Login using combination of `phone` and `password`.
 
 ```git
 curl -X POST http://localhost:8000/api/login -b cookies.txt -c cookies.txt -D headers.txt -H 'Content-Type: application/json' -d '
