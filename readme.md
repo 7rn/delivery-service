@@ -2,11 +2,17 @@
 
 - Clone the repository
 
-- Copy and rename .env.example into .env
+- Copy and rename .env.example into .env or `php -r "file_exists('.env') || copy('.env.example', '.env');"`
  
 - Adjust user data/ credential in .env
 
 - Run `composer install`
+
+- Run `php artisan key:generate`
+
+- Run `php artisan migrate`
+
+- Run `php artisan db:seed`
 
 - Run `php artisan passport:install`
 
@@ -19,19 +25,19 @@ PASSWORD_CLIENT_ID=2
 PASSWORD_CLIENT_SECRET=ErXFrQWWXRAqCONw3wbODE9cPsYvn9sO00WCAZbz
 ```
 
-- Run `php artisan migrate`
-
-- Run `php artisan db:seed`
-
 - Run `php artisan serve`
 
 ## Register User
 
 ### Using Curl
 
+The `phone` and `password` are required for register.
+
 ```git
 curl -X POST http://localhost:8000/api/register -b cookies.txt -c cookies.txt -D headers.txt -H 'Content-Type: application/json' -d '
     {
+        "name": "",
+        "email": "",
         "phone": "098080808556",
         "password": "testpass"
     }
@@ -75,6 +81,8 @@ Body Response
 ## Login
 
 ### Using Curl
+
+Login using combination of `phone` and `password`.
 
 ```git
 curl -X POST http://localhost:8000/api/login -b cookies.txt -c cookies.txt -D headers.txt -H 'Content-Type: application/json' -d '
@@ -166,7 +174,7 @@ The _type_, _originAddress_, and _destinationAddress_ are required
 Option for type can have 1 (PLA), 2 (PAL), 3 (PLL)
 
 ```git
-curl -X --header "Authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiIsImp0aSI6ImFjYjg3MmVkMzI2YTlkNTljNDg4ZGVhNTk0NTFhYWQ4YTM2YjY4MGI5YjMyZTlkZjU4MGQ5ZmQwYjFiNGMzMDYzZmQ0YTI1ODRiZmI0ZDBlIn0.eyJhdWQiOiIyIiwianRpIjoiYWNiODcyZWQzMjZhOWQ1OWM0ODhkZWE1OTQ1MWFhZDhhMzZiNjgwYjliMzJlOWRmNTgwZDlmZDBiMWI0YzMwNjNmZDRhMjU4NGJmYjRkMGUiLCJpYXQiOjE1MjIxMDU5ODMsIm5iZiI6MTUyMjEwNTk4MywiZXhwIjoxNTIyMTA2NTgzLCJzdWIiOiIyIiwic2NvcGVzIjpbXX0.tpiHXsDIKF4FnITXi-7ejbTIDH6_mPQhnz-qsHWvIP6BM8FuzSlca9aFCLjO_UAMRB5NLtnkNAin08f4PMIdGcwLx5RyL_gHpcZEgFtpOGGNEMHBvcrSQ5W5crZx9yasEbQfZBl4sleL_jz2Osb7-teoIWnqxa1tbgnnwew-OJdRL81ROoqYhgB0Trm2ZNVbdohONk42ao9I5A7islwH90pfQQGnfMS5KNoNcPV6DhEmpTfbYAkrOy5xL-MqEL9FtOULeFM0Dmn5NAC7Dk-cbg6Pn2WfZq8I5vMP4qgXgfvEAnqO3yXPAlabsbKXVQHpvqLyAHrCaphfvMJOkNN08FBSdq1ePRZMqNZo5Wwj8BnflfNlqLANyo5MZIvArwpBUaSTu7kIISmvC4lWe1K2srTKscs2GB8DPaKYIDVfGjny2NZ-FAlRLkT-I6EvKOdhS3MMfXaAbxiD27sev6uzAo61k7V3fM3AshEuXgRM-mEekZSm7GkXcke35pUWdfjUpAaVkz_8mL-2eplazh-sJRU8M2EKDgleAqPwIiE_P4XtOiAuE0wNYE3tvWH3SpN704NuoafjsbRJ43TNsYesUH95vGAY_544WWlCWb_9vB3k2Jzl6IB0XKzoNfHrPBC6SPG9TLl-kHTcV-HHxSkdvLSBVkh-THkY56Cle8kvhd4" POST http://localhost:8000/api/login -b cookies.txt -c cookies.txt -D headers.txt -H 'Content-Type: application/json' -d '
+curl -X POST http://localhost:8000/api/v1/order/ -b cookies.txt -c cookies.txt -D headers.txt -H 'Content-Type: application/json' -H "Authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiIsImp0aSI6ImFjYjg3MmVkMzI2YTlkNTljNDg4ZGVhNTk0NTFhYWQ4YTM2YjY4MGI5YjMyZTlkZjU4MGQ5ZmQwYjFiNGMzMDYzZmQ0YTI1ODRiZmI0ZDBlIn0.eyJhdWQiOiIyIiwianRpIjoiYWNiODcyZWQzMjZhOWQ1OWM0ODhkZWE1OTQ1MWFhZDhhMzZiNjgwYjliMzJlOWRmNTgwZDlmZDBiMWI0YzMwNjNmZDRhMjU4NGJmYjRkMGUiLCJpYXQiOjE1MjIxMDU5ODMsIm5iZiI6MTUyMjEwNTk4MywiZXhwIjoxNTIyMTA2NTgzLCJzdWIiOiIyIiwic2NvcGVzIjpbXX0.tpiHXsDIKF4FnITXi-7ejbTIDH6_mPQhnz-qsHWvIP6BM8FuzSlca9aFCLjO_UAMRB5NLtnkNAin08f4PMIdGcwLx5RyL_gHpcZEgFtpOGGNEMHBvcrSQ5W5crZx9yasEbQfZBl4sleL_jz2Osb7-teoIWnqxa1tbgnnwew-OJdRL81ROoqYhgB0Trm2ZNVbdohONk42ao9I5A7islwH90pfQQGnfMS5KNoNcPV6DhEmpTfbYAkrOy5xL-MqEL9FtOULeFM0Dmn5NAC7Dk-cbg6Pn2WfZq8I5vMP4qgXgfvEAnqO3yXPAlabsbKXVQHpvqLyAHrCaphfvMJOkNN08FBSdq1ePRZMqNZo5Wwj8BnflfNlqLANyo5MZIvArwpBUaSTu7kIISmvC4lWe1K2srTKscs2GB8DPaKYIDVfGjny2NZ-FAlRLkT-I6EvKOdhS3MMfXaAbxiD27sev6uzAo61k7V3fM3AshEuXgRM-mEekZSm7GkXcke35pUWdfjUpAaVkz_8mL-2eplazh-sJRU8M2EKDgleAqPwIiE_P4XtOiAuE0wNYE3tvWH3SpN704NuoafjsbRJ43TNsYesUH95vGAY_544WWlCWb_9vB3k2Jzl6IB0XKzoNfHrPBC6SPG9TLl-kHTcV-HHxSkdvLSBVkh-THkY56Cle8kvhd4" -d '
     {
         'name' : '',
         'reference' :'',
@@ -210,7 +218,7 @@ Body Response
 ### Using Curl
 
 ```git
-curl -X --header "Authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiIsImp0aSI6ImFjYjg3MmVkMzI2YTlkNTljNDg4ZGVhNTk0NTFhYWQ4YTM2YjY4MGI5YjMyZTlkZjU4MGQ5ZmQwYjFiNGMzMDYzZmQ0YTI1ODRiZmI0ZDBlIn0.eyJhdWQiOiIyIiwianRpIjoiYWNiODcyZWQzMjZhOWQ1OWM0ODhkZWE1OTQ1MWFhZDhhMzZiNjgwYjliMzJlOWRmNTgwZDlmZDBiMWI0YzMwNjNmZDRhMjU4NGJmYjRkMGUiLCJpYXQiOjE1MjIxMDU5ODMsIm5iZiI6MTUyMjEwNTk4MywiZXhwIjoxNTIyMTA2NTgzLCJzdWIiOiIyIiwic2NvcGVzIjpbXX0.tpiHXsDIKF4FnITXi-7ejbTIDH6_mPQhnz-qsHWvIP6BM8FuzSlca9aFCLjO_UAMRB5NLtnkNAin08f4PMIdGcwLx5RyL_gHpcZEgFtpOGGNEMHBvcrSQ5W5crZx9yasEbQfZBl4sleL_jz2Osb7-teoIWnqxa1tbgnnwew-OJdRL81ROoqYhgB0Trm2ZNVbdohONk42ao9I5A7islwH90pfQQGnfMS5KNoNcPV6DhEmpTfbYAkrOy5xL-MqEL9FtOULeFM0Dmn5NAC7Dk-cbg6Pn2WfZq8I5vMP4qgXgfvEAnqO3yXPAlabsbKXVQHpvqLyAHrCaphfvMJOkNN08FBSdq1ePRZMqNZo5Wwj8BnflfNlqLANyo5MZIvArwpBUaSTu7kIISmvC4lWe1K2srTKscs2GB8DPaKYIDVfGjny2NZ-FAlRLkT-I6EvKOdhS3MMfXaAbxiD27sev6uzAo61k7V3fM3AshEuXgRM-mEekZSm7GkXcke35pUWdfjUpAaVkz_8mL-2eplazh-sJRU8M2EKDgleAqPwIiE_P4XtOiAuE0wNYE3tvWH3SpN704NuoafjsbRJ43TNsYesUH95vGAY_544WWlCWb_9vB3k2Jzl6IB0XKzoNfHrPBC6SPG9TLl-kHTcV-HHxSkdvLSBVkh-THkY56Cle8kvhd4" POST http://localhost:8000/api/login -b cookies.txt -c cookies.txt -D headers.txt -H 'Content-Type: application/json' -d '
+curl -X POST http://localhost:8000/api/v1/order/history -b cookies.txt -c cookies.txt -D headers.txt -H 'Content-Type: application/json' -d -H "Authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiIsImp0aSI6ImFjYjg3MmVkMzI2YTlkNTljNDg4ZGVhNTk0NTFhYWQ4YTM2YjY4MGI5YjMyZTlkZjU4MGQ5ZmQwYjFiNGMzMDYzZmQ0YTI1ODRiZmI0ZDBlIn0.eyJhdWQiOiIyIiwianRpIjoiYWNiODcyZWQzMjZhOWQ1OWM0ODhkZWE1OTQ1MWFhZDhhMzZiNjgwYjliMzJlOWRmNTgwZDlmZDBiMWI0YzMwNjNmZDRhMjU4NGJmYjRkMGUiLCJpYXQiOjE1MjIxMDU5ODMsIm5iZiI6MTUyMjEwNTk4MywiZXhwIjoxNTIyMTA2NTgzLCJzdWIiOiIyIiwic2NvcGVzIjpbXX0.tpiHXsDIKF4FnITXi-7ejbTIDH6_mPQhnz-qsHWvIP6BM8FuzSlca9aFCLjO_UAMRB5NLtnkNAin08f4PMIdGcwLx5RyL_gHpcZEgFtpOGGNEMHBvcrSQ5W5crZx9yasEbQfZBl4sleL_jz2Osb7-teoIWnqxa1tbgnnwew-OJdRL81ROoqYhgB0Trm2ZNVbdohONk42ao9I5A7islwH90pfQQGnfMS5KNoNcPV6DhEmpTfbYAkrOy5xL-MqEL9FtOULeFM0Dmn5NAC7Dk-cbg6Pn2WfZq8I5vMP4qgXgfvEAnqO3yXPAlabsbKXVQHpvqLyAHrCaphfvMJOkNN08FBSdq1ePRZMqNZo5Wwj8BnflfNlqLANyo5MZIvArwpBUaSTu7kIISmvC4lWe1K2srTKscs2GB8DPaKYIDVfGjny2NZ-FAlRLkT-I6EvKOdhS3MMfXaAbxiD27sev6uzAo61k7V3fM3AshEuXgRM-mEekZSm7GkXcke35pUWdfjUpAaVkz_8mL-2eplazh-sJRU8M2EKDgleAqPwIiE_P4XtOiAuE0wNYE3tvWH3SpN704NuoafjsbRJ43TNsYesUH95vGAY_544WWlCWb_9vB3k2Jzl6IB0XKzoNfHrPBC6SPG9TLl-kHTcV-HHxSkdvLSBVkh-THkY56Cle8kvhd4"'
 '
 ```
 
@@ -276,7 +284,7 @@ Body Response
 ### Using Curl
 
 ```git
-curl -X --header "Authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiIsImp0aSI6IjQ2MWJiOGZjOWYxNzVjNmJjMmNjOTQ5YzU2MDJiZTVjMjBiNTc1NTMzMmMwNDI3YzliOTRmOWE2ZDc5YmE0YmZlY2MzZGIyMGY1M2NjZGUxIn0.eyJhdWQiOiIyIiwianRpIjoiNDYxYmI4ZmM5ZjE3NWM2YmMyY2M5NDljNTYwMmJlNWMyMGI1NzU1MzMyYzA0MjdjOWI5NGY5YTZkNzliYTRiZmVjYzNkYjIwZjUzY2NkZTEiLCJpYXQiOjE1MjIxMDg5MDQsIm5iZiI6MTUyMjEwODkwNCwiZXhwIjoxNTIyMTA5NTA0LCJzdWIiOiIyIiwic2NvcGVzIjpbXX0.Ers_tUjo3cs5RSe-2i0gDBBKRUdJpvlNDRf8raMqD5XiRSpGJrYnz2MKPwGmCSxuX4AUYl-0OSAtMT1Lm25zEb2dKjDkCw2PmirIb3jDhSWDxs9pBZ_ArU_AE_p3eu0XWOY5W4z3CaDD5Bcm_CByC4U7jiXAVu6fMh9PsId87GprdYcJkSL9OVuYTliq7b_xYKDxuQ0lWlwqNbpgjlxJT5WH6gRD3ycR6aLTkXUOq7UQOQhxUlFA9RGPIDYUfmJJQk12oOuOwfVLXsYxqS9gvSiUdK4IAU3F7m81NRAuqVTBQXLjId9AV2SeJ7UhDJruuwkNozQNYAow8m4gTXkCPOZX3ScpR5Tx0WrSXQyTI2sroACf2odqMu3abOrN5AiNHwupkv6lLsFOCXBXicwBhiw2EQl_v8Ta2wBLoY5AaJVzf881Nsvfv9n4Tgw8lwePraZ47qpr8LR3EwDIz-WgbtVmuyGKQeWYhh_-43heavLvNd0Ep1zJnWLP2fst4mjPspM0PgpzdlDI0HXO1UoiuVQ4DZu6gqSVQ1-kmC88AO2ZtPMjfhXLyjcCmwzTsykBSPXkMaioZuxfVVxt_Pr1p3qzN-nRnhc01XnitAkpAueK7uHycdgZC0KBNsbyTF60_x8kjG_ZEm1Gdn3TZQ9nMhUiotwLIuqfqyQ6USOqkv8" POST http://localhost:8000/api/logout -b cookies.txt -c cookies.txt -D headers.txt -H 'Content-Type: application/json' -d '
+curl -X POST http://localhost:8000/api/logout -b cookies.txt -c cookies.txt -D headers.txt -H 'Content-Type: application/json' -d -H "Authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiIsImp0aSI6IjQ2MWJiOGZjOWYxNzVjNmJjMmNjOTQ5YzU2MDJiZTVjMjBiNTc1NTMzMmMwNDI3YzliOTRmOWE2ZDc5YmE0YmZlY2MzZGIyMGY1M2NjZGUxIn0.eyJhdWQiOiIyIiwianRpIjoiNDYxYmI4ZmM5ZjE3NWM2YmMyY2M5NDljNTYwMmJlNWMyMGI1NzU1MzMyYzA0MjdjOWI5NGY5YTZkNzliYTRiZmVjYzNkYjIwZjUzY2NkZTEiLCJpYXQiOjE1MjIxMDg5MDQsIm5iZiI6MTUyMjEwODkwNCwiZXhwIjoxNTIyMTA5NTA0LCJzdWIiOiIyIiwic2NvcGVzIjpbXX0.Ers_tUjo3cs5RSe-2i0gDBBKRUdJpvlNDRf8raMqD5XiRSpGJrYnz2MKPwGmCSxuX4AUYl-0OSAtMT1Lm25zEb2dKjDkCw2PmirIb3jDhSWDxs9pBZ_ArU_AE_p3eu0XWOY5W4z3CaDD5Bcm_CByC4U7jiXAVu6fMh9PsId87GprdYcJkSL9OVuYTliq7b_xYKDxuQ0lWlwqNbpgjlxJT5WH6gRD3ycR6aLTkXUOq7UQOQhxUlFA9RGPIDYUfmJJQk12oOuOwfVLXsYxqS9gvSiUdK4IAU3F7m81NRAuqVTBQXLjId9AV2SeJ7UhDJruuwkNozQNYAow8m4gTXkCPOZX3ScpR5Tx0WrSXQyTI2sroACf2odqMu3abOrN5AiNHwupkv6lLsFOCXBXicwBhiw2EQl_v8Ta2wBLoY5AaJVzf881Nsvfv9n4Tgw8lwePraZ47qpr8LR3EwDIz-WgbtVmuyGKQeWYhh_-43heavLvNd0Ep1zJnWLP2fst4mjPspM0PgpzdlDI0HXO1UoiuVQ4DZu6gqSVQ1-kmC88AO2ZtPMjfhXLyjcCmwzTsykBSPXkMaioZuxfVVxt_Pr1p3qzN-nRnhc01XnitAkpAueK7uHycdgZC0KBNsbyTF60_x8kjG_ZEm1Gdn3TZQ9nMhUiotwLIuqfqyQ6USOqkv8"'
 '
 ```
 
