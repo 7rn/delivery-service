@@ -1,0 +1,18 @@
+<!DOCTYPE SynkronSync>
+<sync allowed_difference="2" type="sync" last_sync="5/22/2017 6:00:56 PM">
+ <name data="Gaboot"/>
+ <folders paths="D:/xampp/htdocs/gabootsoft/gabootdev;D:/xampp/htdocs/gabootsoft/gaboot">
+  <folder path="D:/xampp/htdocs/gabootsoft/gabootdev" label="gabootdev">
+   <advanced slave="0" no_empty_folders="0" dont_update="0" backup_folder="0" update_only="0"/>
+  </folder>
+  <folder path="D:/xampp/htdocs/gabootsoft/gaboot" label="gaboot">
+   <advanced slave="1" no_empty_folders="0" dont_update="0" backup_folder="0" update_only="0"/>
+  </folder>
+ </folders>
+ <blacklist files="D:/xampp/htdocs/gabootsoft/gabootdev/.env;D:/xampp/htdocs/gabootsoft/gabootdev/composer.json;D:/xampp/htdocs/gabootsoft/gabootdev/composer.lock;D:/xampp/htdocs/gabootsoft/gaboot/.env;D:/xampp/htdocs/gabootsoft/gaboot/composer.json;D:/xampp/htdocs/gabootsoft/gaboot/composer.lock" extensions="" folders="D:/xampp/htdocs/gabootsoft/gabootdev/.git;D:/xampp/htdocs/gabootsoft/gaboot/.git;D:/xampp/htdocs/gabootsoft/gabootdev/.idea;D:/xampp/htdocs/gabootsoft/gabootdev/bower_components;D:/xampp/htdocs/gabootsoft/gaboot/bower_components;D:/xampp/htdocs/gabootsoft/gabootdev/app/Components;D:/xampp/htdocs/gabootsoft/gaboot/app/Components;D:/xampp/htdocs/gabootsoft/gabootdev/node_modules;D:/xampp/htdocs/gabootsoft/gaboot/node_modules;D:/xampp/htdocs/gabootsoft/gabootdev/packages;D:/xampp/htdocs/gabootsoft/gaboot/packages;D:/xampp/htdocs/gabootsoft/gabootdev/tasks/mirror;D:/xampp/htdocs/gabootsoft/gabootdev/vendor;D:/xampp/htdocs/gabootsoft/gaboot/vendor"/>
+ <advanced_options>
+  <global propagate_deletions="0" no_empty_folders="0" symlinks="0" sync_nosubdirs="0" text_database="1" sync_hidden="0" ignore_blacklist="0" backup_folders="0" alert_collisions="0" update_only="0"/>
+  <analysis analyse_special_only="0" fast_analyse="0" sort_analysis_by_action="0"/>
+  <filters checked=""/>
+ </advanced_options>
+</sync>

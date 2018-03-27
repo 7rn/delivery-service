@@ -1,0 +1,18 @@
+<!DOCTYPE SynkronSync>
+<sync allowed_difference="2" type="sync" last_sync="5/15/2017 12:36:14 AM">
+ <name data="Onsibaardev"/>
+ <folders paths="D:/xampp/htdocs/onsigbaar/onsigbaardev;D:/xampp/htdocs/onsigbaar/onsigbaar">
+  <folder path="D:/xampp/htdocs/onsigbaar/onsigbaardev" label="Onsigbaardev">
+   <advanced slave="0" no_empty_folders="0" dont_update="0" backup_folder="0" update_only="0"/>
+  </folder>
+  <folder path="D:/xampp/htdocs/onsigbaar/onsigbaar" label="Onsigbaar">
+   <advanced slave="1" no_empty_folders="0" dont_update="0" backup_folder="0" update_only="0"/>
+  </folder>
+ </folders>
+ <blacklist files="D:/xampp/htdocs/onsigbaar/onsigbaardev/.env;D:/xampp/htdocs/onsigbaar/onsigbaar/.env;D:/xampp/htdocs/onsigbaar/onsigbaardev/composer.json;D:/xampp/htdocs/onsigbaar/onsigbaar/composer.json;D:/xampp/htdocs/onsigbaar/onsigbaardev/composer.lock;D:/xampp/htdocs/onsigbaar/onsigbaar/composer.lock;D:/xampp/htdocs/onsigbaar/onsigbaardev/public/service-worker.js;D:/xampp/htdocs/onsigbaar/onsigbaar/public/service-worker.js;D:/xampp/htdocs/onsigbaar/onsigbaardev/tasks/config/taskCfg.dev-local.js;D:/xampp/htdocs/onsigbaar/onsigbaar/tasks/config/taskCfg.dev-local.js" extensions="" folders="D:/xampp/htdocs/onsigbaar/onsigbaardev/.git;D:/xampp/htdocs/onsigbaar/onsigbaar/.git;D:/xampp/htdocs/onsigbaar/onsigbaardev/.idea;D:/xampp/htdocs/onsigbaar/onsigbaar/.idea;D:/xampp/htdocs/onsigbaar/onsigbaardev/bower_components;D:/xampp/htdocs/onsigbaar/onsigbaar/bower_components;D:/xampp/htdocs/onsigbaar/onsigbaardev/node_modules;D:/xampp/htdocs/onsigbaar/onsigbaar/node_modules;D:/xampp/htdocs/onsigbaar/onsigbaardev/vendor;D:/xampp/htdocs/onsigbaar/onsigbaar/vendor;D:/xampp/htdocs/onsigbaar/onsigbaardev/packages;D:/xampp/htdocs/onsigbaar/onsigbaar/packages;D:/xampp/htdocs/onsigbaar/onsigbaardev/app/Components;D:/xampp/htdocs/onsigbaar/onsigbaar/app/Components;D:/xampp/htdocs/onsigbaar/onsigbaardev/public/build;D:/xampp/htdocs/onsigbaar/onsigbaar/public/build;D:/xampp/htdocs/onsigbaar/onsigbaardev/public/css;D:/xampp/htdocs/onsigbaar/onsigbaar/public/css;D:/xampp/htdocs/onsigbaar/onsigbaardev/public/js;D:/xampp/htdocs/onsigbaar/onsigbaar/public/js;D:/xampp/htdocs/onsigbaar/onsigbaardev/public/vendor;D:/xampp/htdocs/onsigbaar/onsigbaar/public/vendor;D:/xampp/htdocs/onsigbaar/onsigbaardev/public/storage;D:/xampp/htdocs/onsigbaar/onsigbaar/public/storage;D:/xampp/htdocs/onsigbaar/onsigbaardev/public/views;D:/xampp/htdocs/onsigbaar/onsigbaar/public/views;D:/xampp/htdocs/onsigbaar/onsigbaardev/tasks/mirror;D:/xampp/htdocs/onsigbaar/onsigbaardev/tasks/run/webpack/node_modules;D:/xampp/htdocs/onsigbaar/onsigbaar/tasks/run/webpack/node_modules"/>
+ <advanced_options>
+  <global propagate_deletions="0" no_empty_folders="0" symlinks="0" sync_nosubdirs="0" text_database="1" sync_hidden="0" ignore_blacklist="0" backup_folders="0" alert_collisions="0" update_only="0"/>
+  <analysis analyse_special_only="0" fast_analyse="0" sort_analysis_by_action="0"/>
+  <filters checked=""/>
+ </advanced_options>
+</sync>
