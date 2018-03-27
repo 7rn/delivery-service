@@ -7,10 +7,6 @@ Route::group(['prefix' => 'api'], function() {
         });
     });
 
-    Route::group(['middleware' => 'auth:api', 'prefix' => 'user', 'namespace' => 'Api\User\Http\Controllers'], function() {
-        Route::get('/tests', 'UserController@authTests');
-    });
-
     Route::group(['middleware' => 'api', 'prefix' => 'register', 'namespace' => 'Api\User\Http\Controllers'], function() {
         Route::post('/', 'UserController@register');
     });
