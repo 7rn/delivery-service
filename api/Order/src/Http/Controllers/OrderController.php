@@ -46,7 +46,7 @@ class OrderController extends BaseController
     public function orderHistory(Request $request)
     {
         try {
-            $record = $this->orderService->orderHistory($request);
+            $record = $this->orderService->orderHistory();
         }
         catch (\Exception $error) {
             self::logMessage($error);
