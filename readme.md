@@ -178,9 +178,9 @@ curl -X POST http://localhost:8000/api/v1/order/ -b cookies.txt -c cookies.txt -
       "contact"           : "",
       "type"              : "1",
       "originName"        : "",
-      "originAddress"     : "Test Origin Address",
+      "originAddress"     : "Test Origin Address No. 13",
       "destinationName"   : "",
-      "destinationAddress": "Test Destination Address",
+      "destinationAddress": "Test Destination Address No. 13",
       "userId"            : ""
     }
 '
