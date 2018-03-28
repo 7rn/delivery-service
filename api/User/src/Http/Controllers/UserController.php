@@ -30,7 +30,7 @@ class UserController extends BaseController
 
         $records = (!$record)
             ? response()->fail([
-                'result' => $record,
+                'result'  => $record,
                 'message' => 'User failed to register',
             ])
             : response()->success([
@@ -39,5 +39,10 @@ class UserController extends BaseController
             ]);
 
         return $records;
+    }
+
+    public function welcome()
+    {
+        return view('welcome');
     }
 }
