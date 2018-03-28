@@ -96,7 +96,7 @@ curl -X POST http://localhost:8000/api/login -b cookies.txt -c cookies.txt -D he
 Header Response
 
 The refresh token saved as a HttpOnly cookie is to prevent Cross-site scripting (XSS) attacks. 
-The HttpOnly flag tells the browser that this cookie should not be accessible through javascript.
+The HttpOnly flag tells the client device that this cookie should not be accessible through javascript.
 
 ```text
 HTTP/1.1 200 OK
@@ -207,15 +207,16 @@ Body Response
   "data"  : {
     "result" : [
       {
-        "name"               : null,
+        "user_name"          : "pog",
+        "order_name"         : null,
         "reference"          : null,
         "contact"            : null,
-        "type_name"          : "PLL",
-        "type_description"   : "Origin Locker, Destination Locker",
+        "type_name"          : "PLA",
+        "type_description"   : "Origin Locker, Destination Address",
         "origin_name"        : null,
-        "origin_address"     : "Test Origin Address",
+        "origin_address"     : "Test Origin Address No. 13",
         "destination_name"   : null,
-        "destination_address": "Test Destination Addrees"
+        "destination_address": "Test Destination Addrees No. 13"
       }
     ],
     "message": "Order successfully saved"
