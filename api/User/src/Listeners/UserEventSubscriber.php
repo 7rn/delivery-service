@@ -10,7 +10,7 @@ class UserEventSubscriber
 {
     public function subscribe($events)
     {
-        $events->listen('user.login', 'App\Components\Passerby\Listeners\LoginEventSubscriber@onUserLogin', 10);
+        $events->listen('user.login', 'Api\User\Listeners\LoginEventSubscriber@onUserLogin', 10);
     }
 
     public function onUserLogin()

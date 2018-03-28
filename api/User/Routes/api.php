@@ -14,7 +14,7 @@ Route::group(['prefix' => 'api'], function() {
         Route::post('/', 'LoginController@login');
         Route::post('/refresh', 'LoginController@refresh');
     });
-    Route::group(['middleware' => 'auth:api', 'prefix' => '', 'namespace' => 'App\Components\Passerby\Http\Controllers\Auth'], function() {
+    Route::group(['middleware' => 'auth:api', 'prefix' => '', 'namespace' => 'Api\User\Http\Controllers\Auth'], function() {
         Route::post('/logout', 'LoginController@logout');
     });
 });

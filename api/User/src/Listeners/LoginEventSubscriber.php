@@ -10,11 +10,11 @@ class LoginEventSubscriber
 {
     public function subscribe($events)
     {
-        $events->listen('user.login', 'App\Components\Passerby\Listeners\LoginEventSubscriber@onUserLogin', 10);
-        $events->listen('user.logout', 'App\Components\Passerby\Listeners\LoginEventSubscriber@onUserLogout', 10);
-        $events->listen('user.register', 'App\Components\Passerby\Listeners\LoginEventSubscriber@onUserRegister', 10);
-        $events->listen('user.resend', 'App\Components\Passerby\Listeners\LoginEventSubscriber@resend', 10);
-        $events->listen('user.reset', 'App\Components\Passerby\Listeners\LoginEventSubscriber@passwordReset', 10);
+        $events->listen('user.login', 'Api\User\Listeners\LoginEventSubscriber@onUserLogin', 10);
+        $events->listen('user.logout', 'Api\User\Listeners\Listeners\LoginEventSubscriber@onUserLogout', 10);
+        $events->listen('user.register', 'Api\User\Listeners\LoginEventSubscriber@onUserRegister', 10);
+        $events->listen('user.resend', 'Api\User\Listeners\Listeners\LoginEventSubscriber@resend', 10);
+        $events->listen('user.reset', 'Api\User\Listeners\Listeners\LoginEventSubscriber@passwordReset', 10);
     }
 
     public function onUserLogin()

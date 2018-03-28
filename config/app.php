@@ -167,7 +167,6 @@ return [
         /*
          * Package Service Providers...
          */
-        // TCG\Voyager\VoyagerServiceProvider::class,
 
         /*
          * Application Service Providers...
@@ -182,7 +181,7 @@ return [
          * Package Service Providers...
          */
         Onsigbaar\Foundation\Base\Providers\FoundationServiceProvider::class,
-        App\Components\Onsigbaar\Providers\OnsigbaarServiceProvider::class,
+        App\Components\Signature\Providers\SignatureServiceProvider::class,
 
     ],
 
