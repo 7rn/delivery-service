@@ -44,13 +44,4 @@ class UserController extends BaseController
 
         return $records;
     }
-
-    public function authTests()
-    {
-        echo 'yo';
-        return auth('api')->user();
-        //return auth('api')->id();
-        //return Auth::user();
-        //return Auth::id();
-    }
 }
