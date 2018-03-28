@@ -52,7 +52,8 @@ class OrderRepository extends Repository implements OrderRepositoryInterface
             ->leftJoin('order_origin', 'order_address.order_origin_id', '=', 'order_origin.id')
             ->leftJoin('order_destination', 'order_address.order_destination_id', '=', 'order_destination.id')
             ->select(
-                'orders.name AS name', 'orders.reference', 'orders.contact',
+                'users.name AS user_name',
+                'orders.name AS order_name', 'orders.reference', 'orders.contact',
                 'order_type.name AS type_name', 'order_type.description AS type_description',
                 'order_origin.name AS origin_name', 'order_origin.address AS origin_address',
                 'order_destination.name AS destination_name', 'order_destination.address AS destination_address'

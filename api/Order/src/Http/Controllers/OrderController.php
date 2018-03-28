@@ -3,7 +3,6 @@
 namespace Api\Order\Http\Controllers;
 
 use Illuminate\Http\Request;
-use Illuminate\Http\Response;
 use Api\Order\Requests\OrderRequest;
 use Api\Order\Services\OrderService;
 use Api\Order\Http\Controllers\Controller as BaseController;

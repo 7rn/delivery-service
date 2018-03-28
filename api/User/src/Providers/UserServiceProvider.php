@@ -29,7 +29,8 @@ class UserServiceProvider extends ServiceProvider
         $this->loadMigrationsFrom(__DIR__.'/../../Database/Migrations');
 
         $dispatcher = $this->app->make('events');
-        $dispatcher->subscribe('App\Components\Passerby\Listeners\LoginEventSubscriber');
+        $dispatcher->subscribe('Api\User\Listeners\LoginEventSubscriber');
+        $dispatcher->subscribe('Api\User\Listeners\UserEventSubscriber');
     }
 
     /**

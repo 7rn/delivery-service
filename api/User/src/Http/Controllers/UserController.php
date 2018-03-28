@@ -2,10 +2,6 @@
 
 namespace Api\User\Http\Controllers;
 
-use Illuminate\Http\Request;
-use Illuminate\Http\Response;
-use Illuminate\Support\Facades\Auth;
-use Illuminate\Auth\AuthManager;
 use Api\User\Services\UserService;
 use Api\User\Http\Controllers\Controller as BaseController;
 use Api\User\Requests\UserRegisterRequest;
@@ -34,7 +30,7 @@ class UserController extends BaseController
 
         $records = (!$record)
             ? response()->fail([
-                'result' => $record,
+                'result'  => $record,
                 'message' => 'User failed to register',
             ])
             : response()->success([
@@ -43,5 +39,10 @@ class UserController extends BaseController
             ]);
 
         return $records;
+    }
+
+    public function welcome()
+    {
+        return view('welcome');
     }
 }
