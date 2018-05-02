@@ -23,29 +23,29 @@ class OrderService
         $this->orderRepository = $orderRepository;
     }
 
-    public function order($req, array $param = [])
+    public function order($request, array $param = [])
     {
-        $orderDestination = $this->destination($req->destinationName, $req->destinationAddress, new Destination);
-        $orderOrigin      = $this->origin($req->originName, $req->originAddress, new Origin);
-        $orderAddress     = $this->address($orderOrigin->id, $orderDestination->id, $req->type, new Address);
+        $orderDestination = $this->destination(new Destination, $request->destinationName, $request->destinationAddress);
+        $orderOrigin      = $this->origin(new Origin, $request->originName, $request->originAddress);
+        $orderAddress     = $this->address(new Address, $orderOrigin->id, $orderDestination->id, $request->type);
 
         $uid = (auth('api')->id()) ? auth('api')->id() : (Auth::id()) ? Auth::id() : 0;
 
-        return $this->orderRepository->order($req->name, $req->reference, $req->contact, $uid, $orderAddress->id);
+        return $this->orderRepository->order($request->name, $request->reference, $request->contact, $uid, $orderAddress->id);
 
     }
 
-    public function address($originId, $destinationId, $type, $address)
+    public function address($address, $originId, $destinationId, $type)
     {
         return $address($originId, $destinationId, $type);
     }
 
-    public function destination($name, $address, $destination)
+    public function destination($destination, $name, $address)
     {
         return $destination($name, $address);
     }
 
-    public function origin($name, $address, $origin)
+    public function origin($origin, $name, $address)
     {
         return $origin($name, $address);
     }
